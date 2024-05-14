@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-export default function stackNavigationSupir() {
+export default function StackNavigationSupir() {
   return (
     <View>
       <Text>Stack Navigation</Text>
