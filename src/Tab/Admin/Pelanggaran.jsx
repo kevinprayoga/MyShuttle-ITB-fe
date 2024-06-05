@@ -39,7 +39,7 @@ const SearchForm = () => {
     );
 };
 
-export default function UserHome() {
+export default function PelanggaranAdmin() {
   return (
     <View className="mx-6 mt-4">
         <Text className="text-2xl font-medium mb-4">List Pelanggaran</Text>
