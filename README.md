@@ -1,5 +1,4 @@
 # MyShuttle-ITB-fe
-(belum masuk ke fase development expo)
 
 ## How to Start
 1. Install package yarn
