@@ -1,10 +1,10 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-export default function MapsAdmin() {
+export default function Landing1() {
   return (
     <View>
-      <Text>Maps</Text>
+      <Text>Landing1</Text>
     </View>
   );
-}
+};
