@@ -4,10 +4,11 @@ import { NavigationContainer, useNavigation, useFocusEffect } from "@react-navig
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { config, closeConfig } from "./hooks/animation";
 
-import Landing1 from './src/LandingPage/Landing1';
-import Landing2 from './src/LandingPage/Landing2';
-import Login from './src/LandingPage/Login';
-import Register from './src/LandingPage/Register';
+import Landing1 from './src/landingPage/Landing1';
+import Landing2 from './src/landingPage/Landing2';
+import Login from './src/landingPage/login';
+import Register from './src/landingPage/register';
+import Pelanggaran from './src/Tab/Admin/Pelanggaran';
 
 const Stack = createNativeStackNavigator();
 
