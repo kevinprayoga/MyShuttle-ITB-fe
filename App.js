@@ -4,10 +4,7 @@ import { NavigationContainer, useNavigation, useFocusEffect } from "@react-navig
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { config, closeConfig } from "./hooks/animation";
 
-import Landing1 from './src/LandingPage/Landing1';
-import Landing2 from './src/LandingPage/Landing2';
-import Login from './src/LandingPage/Login';
-import Register from './src/LandingPage/Register';
+import Profile from './src/Tab/Profile';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,24 +24,9 @@ export default function App() {
         animation="fade"
       >
         <Stack.Screen
-          name="Landing1"
-          component={Landing1}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Landing2"
-          component={Landing2}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Register"
-          component={Register}
-          options={{ headerShown: false }}
+          name="Profile"
+          component={Profile}
+          options={{ headerShown: true }}
         />
       </Stack.Navigator>
     </NavigationContainer>
