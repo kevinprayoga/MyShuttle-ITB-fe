@@ -4,7 +4,7 @@ import { NavigationContainer, useNavigation, useFocusEffect } from "@react-navig
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { config, closeConfig } from "./hooks/animation";
 
-import Profile from './src/Tab/Profile';
+import Scan from './src/Tab/Supir/ScanResult';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,9 +24,9 @@ export default function App() {
         animation="fade"
       >
         <Stack.Screen
-          name="Profile"
-          component={Profile}
-          options={{ headerShown: true }}
+          name="Scan"
+          component={Scan}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
