@@ -4,10 +4,13 @@ import { NavigationContainer, useNavigation, useFocusEffect } from "@react-navig
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { config, closeConfig } from "./hooks/animation";
 
-import Landing1 from './src/LandingPage/Landing1';
-import Landing2 from './src/LandingPage/Landing2';
-import Login from './src/LandingPage/Login';
-import Register from './src/LandingPage/Register';
+// import Landing1 from './src/LandingPage/Landing1';
+// import Landing2 from './src/LandingPage/Landing2';
+// import Login from './src/LandingPage/Login';
+// import Register from './src/LandingPage/Register';
+import Reservasi from './src/Tab/User/Reservasi';
+import ReservasiDetail from './src/Tab/User/ReservasiDetail';
+import ReservasiJam from './src/Tab/User/ReservasiJam';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,10 +29,25 @@ export default function App() {
         headerMode="float"
         animation="fade"
       >
+        {/* <Stack.Screen
+          name="Reservasi"
+          component={Reservasi}
+          options={{ headerShown: true }}
+        /> */}
         <Stack.Screen
+          name="Pilih Jam Keberangkatan"
+          component={ReservasiJam}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Reservasi Detail"
+          component={ReservasiDetail}
+          options={{ headerShown: true }}
+        />
+        {/* <Stack.Screen
           name="Landing1"
           component={Landing1}
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
         />
         <Stack.Screen
           name="Landing2"
@@ -45,7 +63,7 @@ export default function App() {
           name="Register"
           component={Register}
           options={{ headerShown: false }}
-        />
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
