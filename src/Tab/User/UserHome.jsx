@@ -1,9 +1,29 @@
 import React from "react";
-import { Text, TouchableOpacity, View, Image } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import { Text, TouchableOpacity, View, Image, Modal, StyleSheet} from "react-native";
 import { images } from "../../../constants";
-
+import { useState } from "react";
+import DatePicker from "react-native-modern-datepicker";
+import {getToday, getFormatedDate} from "react-native-modern-datepicker";
 
 export default function UserHome() {
+
+  const today = new Date();
+
+  const startDate = getFormatedDate(today.setDate(today.getDate() + 1), 'YYYY/MM/DD')
+
+  const [open, setOpen] = useState(false) // bukatutupmodal
+  const [date, setDate] = useState('2024/02/08') // date variable
+
+  function handleOnPress (){
+    setOpen(!open);
+  }
+
+  function handleChange (propDate){
+    console.log(propDate);
+    setDate(propDate);
+  }
+
   return (
     <View>
       <Text className= "text-2xl top-20 ml-6 font-semibold">Selamat datang, Vania!</Text>
@@ -28,11 +48,24 @@ export default function UserHome() {
         <Text className= "text-lg top-14 font-semibold text-left flex -ml-36">Kamis, 02 Mei 2024</Text>
         <View className= "bg-[#716C6C] rounded-lg h-[2] w-[300] items-center top-14 ml-2"></View>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handleOnPress}>
             <View className="items-right ml-64 top-6">
                 <Image source={images.calendar} className="h-7 w-7"/>
             </View>
         </TouchableOpacity>
+
+        <Modal
+        animationType="slide"
+        transparent={true}
+        visible={open}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <DatePicker onDateChange={handleChange} selected={date} minimumDate={startDate} mode="calendar"></DatePicker>
+            </View>
+          </View>
+
+        </Modal>
 
         <TouchableOpacity>
             <View className="bg-[#2027DF] rounded-lg h-[50] w-[310] top-[80] items-center">
@@ -43,5 +76,35 @@ export default function UserHome() {
 
 
     </View>
+
+   
   );
 };
+
+const styles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22
+  },
+
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    width: '90%',
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  }
+
+
+})
