@@ -4,6 +4,13 @@ import { NavigationContainer, useNavigation, useFocusEffect } from "@react-navig
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { config, closeConfig } from "./hooks/animation";
 
+// import Landing1 from './src/LandingPage/Landing1';
+// import Landing2 from './src/LandingPage/Landing2';
+// import Login from './src/LandingPage/Login';
+// import Register from './src/LandingPage/Register';
+import Reservasi from './src/Tab/User/Reservasi';
+import ReservasiDetail from './src/Tab/User/ReservasiDetail';
+import ReservasiJam from './src/Tab/User/ReservasiJam';
 import Landing1 from './src/landingPage/Landing1';
 import Landing2 from './src/landingPage/Landing2';
 import Login from './src/landingPage/login';
@@ -30,15 +37,40 @@ export default function App() {
         animation="fade"
       >
         {/* <Stack.Screen
-          name="Pelanggaran"
-          component={Pelanggaran}
+          name="Reservasi"
+          component={Reservasi}
+          options={{ headerShown: true }}
+        /> */}
+        {/* <Stack.Screen
+          name="Pilih Jam Keberangkatan"
+          component={ReservasiJam}
           options={{ headerShown: true }}
         /> */}
         <Stack.Screen
-          name="UserHome"
-          component={UserHome}
+          name="Reservasi Detail"
+          component={ReservasiDetail}
+          options={{ headerShown: true }}
+        />
+        {/* <Stack.Screen
+          name="Landing1"
+          component={Landing1}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Landing2"
+          component={Landing2}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Register"
+          component={Register}
+          options={{ headerShown: false }}
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
