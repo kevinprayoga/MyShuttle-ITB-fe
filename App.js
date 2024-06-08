@@ -4,6 +4,8 @@ import { NavigationContainer, useNavigation, useFocusEffect } from "@react-navig
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { config, closeConfig } from "./hooks/animation";
 
+{/* App.js for testing only. Use main's branch of App.js when merging. */}
+
 // import Landing1 from './src/LandingPage/Landing1';
 // import Landing2 from './src/LandingPage/Landing2';
 // import Login from './src/LandingPage/Login';

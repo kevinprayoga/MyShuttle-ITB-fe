@@ -1,7 +1,13 @@
 import React from "react";
 import { Text, Pressable, View } from "react-native";
 
+{/* 
+    STEP KE-2 DARI RESERVASI
+    Figma Frame Name: Reservasi
+*/}
+
 export const TanggalContainer = ({ tanggal }) => {
+    {/* Container tanggal yang ditaro di bagian atas. */}
     return (
         <View className="py-1.5 border-solid border-1 bg-white rounded-lg mb-5">
             <Text className="text-base text-center">{tanggal}</Text>
@@ -10,6 +16,7 @@ export const TanggalContainer = ({ tanggal }) => {
 }
 
 export const ReservasiInfoContainer = ({ from, dest, departureTime, arrivalTime, nomorShuttle, platMobil }) => {
+    {/* Container buat informasi reservasi. */}
     return (
         <View className="py-4 px-4 rounded-lg bg-white mb-5">
             <View className="flex-row mb-4">
