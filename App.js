@@ -4,6 +4,11 @@ import { NavigationContainer, useNavigation, useFocusEffect } from "@react-navig
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { config, closeConfig } from "./hooks/animation";
 
+import Landing1 from './src/landingPage/Landing1';
+import Landing2 from './src/landingPage/Landing2';
+import Login from './src/landingPage/login';
+import Register from './src/landingPage/register';
+import Pelanggaran from './src/Tab/Admin/Pelanggaran'
 
 import UserHome from './src/Tab/User/UserHome';
 
@@ -24,6 +29,11 @@ export default function App() {
         headerMode="float"
         animation="fade"
       >
+        {/* <Stack.Screen
+          name="Pelanggaran"
+          component={Pelanggaran}
+          options={{ headerShown: true }}
+        /> */}
         <Stack.Screen
           name="UserHome"
           component={UserHome}
