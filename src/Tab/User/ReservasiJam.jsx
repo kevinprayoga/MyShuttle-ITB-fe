@@ -47,6 +47,7 @@ export default function ReservasiJam() {
             <TanggalContainer tanggal="Senin, 3 Mei 2024"/>
             {/* Dari sini, pilih jam, habis itu kearahin ke page Reservasi.jsx sesuai ID (pilihan jam masing-masing) */}
             <ReservasiJamContainer
+                // REPLACE DATA HERE AS NEEDED
                 from="Ganesha"
                 dest="Jatinangor"
                 departureTime="08.00"

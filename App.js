@@ -36,11 +36,11 @@ export default function App() {
           component={Reservasi}
           options={{ headerShown: true }}
         /> */}
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Pilih Jam Keberangkatan"
           component={ReservasiJam}
           options={{ headerShown: true }}
-        />
+        /> */}
         <Stack.Screen
           name="Reservasi Detail"
           component={ReservasiDetail}
