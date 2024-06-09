@@ -7,14 +7,13 @@ import { images } from "../../../constants";
 export default function Scan() {
   const [permission, requestPermission] = useCameraPermissions();
   const navigation = useNavigation();
+  const [schedule, setScheduleData] = useState([]);
 
   if (!permission) {
-    // Camera permissions are still loading.
     return <View />;
   }
 
   if (!permission.granted) {
-    // Camera permissions are not granted yet.
     return (
       <View className="flex-1 justify-center items-center">
         <Text className="text-center">We need your permission to show the camera</Text>
@@ -23,22 +22,31 @@ export default function Scan() {
     );
   }
 
-  const handleBarCodeScanned = ({ type, data }) => {
+  const handleBarCodeScanned = async ({ type, data }) => {
     console.log(`Scanned data: ${data}`);
-    
-    // Parse the scanned data
-    const dataLines = data.split('\n').map(line => line.trim());
-    const scanData = {};
-    dataLines.forEach(line => {
-      const [key, value] = line.split(':').map(part => part.trim());
-      scanData[key] = value;
-    });
 
-    // Check if the scanned data contains all necessary information
-    const requiredFields = ["From", "Destination", "Departure Time", "Arrival Time", "Shuttle Number", "Vehicle Plate", "Date"];
-    const isValid = requiredFields.every(field => field in scanData);
+    try {
+      const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}:${process.env.EXPO_PUBLIC_PORT}/schedule/${data}`, {
+        method: "GET",
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
 
-    navigation.navigate('ScanResult', { success: isValid, data: scanData });
+      if (response.ok) {
+        const scheduleData = await response.json();
+        console.log('Schedule data:', scheduleData);
+        setScheduleData(scheduleData);
+        setTimeout(() => navigation.navigate('ScanResult', { success: true, data: scheduleData }), 100);
+
+      } else {
+        console.error('Error fetching schedule data:', await response.json());
+        navigation.navigate('ScanResult', { success: false });
+      }
+    } catch (error) {
+      console.error("Error fetching schedule data: ", error);
+      navigation.navigate('ScanResult', { success: false });
+    }
   };
 
   return (
@@ -63,9 +71,7 @@ export default function Scan() {
         <TouchableOpacity className="mx-3 bg-blue-500 rounded-full p-4">
           <Image source={images.gallery} className="w-6 h-6 tint-white" />
         </TouchableOpacity>
-        <TouchableOpacity
-          className="mx-3 bg-blue-500 rounded-full p-4"
-        >
+        <TouchableOpacity className="mx-3 bg-blue-500 rounded-full p-4">
           <Image source={images.flash} className="w-3 h-6 tint-white" />
         </TouchableOpacity>
       </View>

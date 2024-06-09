@@ -1,26 +1,27 @@
 import React from "react";
 import { Text, View, TouchableOpacity } from "react-native";
+import { useRoute, useNavigation } from '@react-navigation/native';
 
-export const ReservasiInfoContainer = ({ from, dest, departureTime, arrivalTime, nomorShuttle, platMobil }) => {
+export const ReservasiInfoContainer = ({ location, destination, startTime, endTime, scheduleId }) => {
     return (
         <View className="py-4 px-4 rounded-lg bg-blue-50 mb-5 mt-5">
             <View className="flex-row mb-4">
                 <View className="mr-6">
-                    <Text className="text-lg font-bold mb-2">{from}</Text>
-                    <Text className="font-bold text-4xl">{departureTime}</Text>
+                    <Text className="text-lg font-bold mb-2">Ganesha</Text>
+                    <Text className="font-bold text-4xl">19.00</Text>
                 </View>
                 <View>
-                    <Text className="text-lg font-bold mb-2">{dest}</Text>
-                    <Text className="font-bold text-4xl">{arrivalTime}</Text>
+                    <Text className="text-lg font-bold mb-2">Jatinangor</Text>
+                    <Text className="font-bold text-4xl">21.00</Text>
                 </View>
             </View>
             <Text className="font-bold text-lg mb-2">Nomor Shuttle:</Text>
             <View className="flex-row mb-4">
                 <View className="mr-4 bg-gray-100 py-2 px-4 rounded-lg align-center text-center">
-                    <Text className="text-4xl font-medium">{nomorShuttle}</Text>
+                    <Text className="text-4xl font-medium">10</Text>
                 </View>
                 <View className="bg-sky-200 py-2 px-4 rounded-lg align-center text-center">
-                    <Text className="text-4xl font-medium">{platMobil}</Text>
+                    <Text className="text-4xl font-medium">D 123 SBS</Text>
                 </View>
             </View>
             <Text className="text-lg font-bold">Keterangan</Text>
@@ -29,7 +30,9 @@ export const ReservasiInfoContainer = ({ from, dest, departureTime, arrivalTime,
     );
 }
 
-export default function ScanResult({ route, navigation }) {
+export default function ScanResult() {
+  const route = useRoute();
+  const navigation = useNavigation();
   const { success, data } = route.params;
 
   return (
@@ -40,18 +43,17 @@ export default function ScanResult({ route, navigation }) {
       <Text className="text-2xl font-medium mt-12">Scan QR Code</Text>
       {success ? (
         <>
-        <View className="bg-green-100 rounded-lg p-4 mt-4 w-full items-center">
-          <Text className="text-green-700 text-lg font-bold">Berhasil scan!</Text>
-        </View>
-        <ReservasiInfoContainer
-          from={data["From"]}
-          dest={data["Destination"]}
-          departureTime={data["Departure Time"]}
-          arrivalTime={data["Arrival Time"]}
-          nomorShuttle={data["Shuttle Number"]}
-          platMobil={data["Vehicle Plate"]}
-        />
-      </>
+          <View className="bg-green-100 rounded-lg p-4 mt-4 w-full items-center">
+            <Text className="text-green-700 text-lg font-bold">Berhasil scan!</Text>
+          </View>
+          <ReservasiInfoContainer
+            location={data.location}
+            destination={data.destination}
+            startTime={data.startTime}
+            endTime={data.endTime}
+            scheduleId={data.scheduleId}
+          />
+        </>
       ) : (
         <View className="bg-red-100 rounded-lg p-4 mt-4 w-full items-center">
           <Text className="text-red-700 text-lg font-bold">QR Code tidak berhasil di-scan</Text>
