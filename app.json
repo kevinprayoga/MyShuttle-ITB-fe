@@ -15,6 +15,18 @@
       "supportsTablet": true,
       "infoPlist": {
         "NSCameraUsageDescription": "This app uses the camera to scan barcodes."
+      "bundleIdentifier": "com.kevinprayoga.MyShuttleITB",
+      "infoPlist": {
+        "NSAppTransportSecurity": {
+          "NSAllowsArbitraryLoads": true,
+          "NSExceptionDomains": {
+            "your-domain.com": {
+              "NSTemporaryExceptionAllowsInsecureHTTPLoads": true,
+              "NSIncludesSubdomains": true,
+              "NSTemporaryExceptionMinimumTLSVersion": "TLSv1.2"
+            }
+          }
+        }
       }
     },
     "android": {
@@ -23,9 +35,17 @@
         "backgroundColor": "#ffffff",
         "permissions": ["CAMERA"]
       }
+      "permissions": [
+        "android.permission.INTERNET"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b3c861e2-4632-4c3f-956c-dcffea64e57f"
+      }
     }
   }
 }
