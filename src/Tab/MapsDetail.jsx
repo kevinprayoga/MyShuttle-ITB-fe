@@ -14,7 +14,7 @@ export default function DetailMaps({ route, navigation }) {
         setCurrentLocation(coordinates[newIndex]);
         return newIndex;
       });
-    }, 3000); // Update every 3 seconds
+    }, 5000); // Update every 3 seconds
 
     return () => clearInterval(interval);
   }, [coordinates]);
