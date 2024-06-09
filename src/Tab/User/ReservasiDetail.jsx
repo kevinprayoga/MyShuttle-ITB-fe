@@ -46,9 +46,7 @@ function ReservationQR() {
         return text.replace(/%0A\s+/g, '');
     };
   
-    const reservationText = `
-        scheduleId: 'S5TZ5eRQ35KdPxDUMnvW',
-    `;
+    const reservationText = `S5TZ5eRQ35KdPxDUMnvW`;
 
     const cleanReservationText = removeExtraSpaces(reservationText);
   
