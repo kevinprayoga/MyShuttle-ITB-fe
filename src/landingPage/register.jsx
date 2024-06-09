@@ -48,6 +48,7 @@ export default function Register() {
     }
 
     try {
+      console.log('test');
       const userCredential = await createUserWithEmailAndPassword(auth, emailAddress, password);
       const user = userCredential.user;
       setUserId(user?.uid);

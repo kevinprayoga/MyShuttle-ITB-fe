@@ -3,6 +3,7 @@ import { Text, Pressable, View, Image } from "react-native";
 import { TanggalContainer, ReservasiInfoContainer } from './Reservasi';
 import dummy_qr from '../../../assets/images/dummy_qr.png';
 import QRCodeSVG from 'react-native-qrcode-svg';
+import { useNavigation } from "@react-navigation/native";
 
 {/*
     STEP KE-3 DARI RESERVASI
@@ -13,9 +14,9 @@ function ReservationQR() {
     const [reservationData, setReservationData] = useState({
         from: 'Ganesha',
         dest: 'Jatinangor',
-        departureTime: '07.00',
-        arrivalTime: '08.00',
-        nomorShuttle: '9',
+        departureTime: '19.00',
+        arrivalTime: '21.00',
+        nomorShuttle: '10',
         platMobil: 'D 8234 X',
     });
     const [tanggal, setTanggal] = useState('Senin, 3 Mei 2024');
@@ -46,14 +47,7 @@ function ReservationQR() {
     };
   
     const reservationText = `
-        From: ${reservationData.from}
-        Destination: ${reservationData.dest}
-        Departure Time: ${reservationData.departureTime}
-        Arrival Time: ${reservationData.arrivalTime}
-        Shuttle Number: ${reservationData.nomorShuttle}
-        Vehicle Plate: ${reservationData.platMobil}
-
-        Date: ${tanggal}
+        scheduleId: 'S5TZ5eRQ35KdPxDUMnvW',
     `;
 
     const cleanReservationText = removeExtraSpaces(reservationText);
@@ -70,6 +64,7 @@ function ReservationQR() {
 };
 
 export default function ReservasiDetail() {
+    const nav = useNavigation();
     return (
         <View className="mx-6 mt-4">
             <TanggalContainer tanggal="Senin, 3 Mei 2024"/>
@@ -78,13 +73,13 @@ export default function ReservasiDetail() {
                 // REPLACE DATA HERE AS NEEDED
                 from="Ganesha"
                 dest="Jatinangor"
-                departureTime="07.00"
-                arrivalTime="08.00"
-                nomorShuttle="9"
+                departureTime="19.00"
+                arrivalTime="21.00"
+                nomorShuttle="10"
                 platMobil="D 8234 X"
             />
             <ReservationQR />
-            <Pressable className="bg-blue-600 px-8 py-3 rounded-lg mb-4">
+            <Pressable onPress={() => nav} className="bg-blue-600 px-8 py-3 rounded-lg mb-4">
                 <Text className="text-white text-lg text-center font-medium">Kembali ke Beranda</Text>
             </Pressable>
         </View>

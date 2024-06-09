@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, Pressable, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 {/* 
     STEP KE-2 DARI RESERVASI
@@ -45,15 +46,16 @@ export const ReservasiInfoContainer = ({ from, dest, departureTime, arrivalTime,
 }
 
 export default function Reservasi() {
+    const nav = useNavigation();
     return (
         <View className="mx-6 mt-4">
             <TanggalContainer tanggal="Senin, 3 Mei 2024"/>
             <ReservasiInfoContainer
                 from="Ganesha"
                 dest="Jatinangor"
-                departureTime="07.00"
-                arrivalTime="08.00"
-                nomorShuttle="9"
+                departureTime="19.00"
+                arrivalTime="21.00"
+                nomorShuttle="10"
                 platMobil="D 8234 X"
             />
             <View className="border-dashed border-2 border-gray-300 p-4 mb-4">
@@ -67,7 +69,7 @@ export default function Reservasi() {
                     3. Tiket harus ditunjukkan agar dapat naik shuttle.
                 </Text>
             </View>
-            <Pressable className="bg-blue-600 px-8 py-3 rounded-lg mb-4">
+            <Pressable onPress={() => nav.push("ReservasiDetail")} className="bg-blue-600 px-8 py-3 rounded-lg mb-4">
                 <Text className="text-white text-lg text-center font-medium">Booking Tempat</Text>
             </Pressable>
             <Pressable className="border-solid border-2 border-blue-600 px-8 py-3 rounded-lg mb-4">
