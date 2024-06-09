@@ -4,6 +4,7 @@ import switchloc from '../assets/images/switchloc.png';
 import calendar from '../assets/images/calendar.png';
 import landing from '../assets/images/landing.png';
 import register from '../assets/images/register.png';
+import profile from '../assets/images/profile.png';
 
 export default {
   logo,
@@ -12,4 +13,5 @@ export default {
   dummy_qr,
   landing,
   register,
+  profile,
 }

@@ -35,12 +35,6 @@ export default function DetailMaps({ route, navigation }) {
           title="Lokasi Shuttle"
         />
       </MapView>
-      <View style={styles.navbar}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-          <Text style={styles.backButtonText}>Back</Text>
-        </TouchableOpacity>
-        <Text style={styles.title}>Lokasi Shuttle</Text>
-      </View>
     </View>
   );
 }

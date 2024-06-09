@@ -9,7 +9,7 @@ import UserTabNavigation from "./src/Navigation/UserTabNavigation";
 import AdminTabNavigation from "./src/Navigation/AdminTabNavigation";
 import SupirStackNavigation from "./src/Navigation/SupirStackNavigation";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import useStore from './src/context/store';
 
@@ -26,12 +26,12 @@ const SignedInNavigator = () => {
   useEffect(() => {
     async function roleUser() {
       setRole(await fetchRoleUserData(userId));
-      if (role === "admin") {
-        nav.navigate("TabAdmin");
-      } 
-      if (role === "supir"){
-        nav.navigate("StackSupir");
-      }
+      // if (role === "admin") {
+      //   nav.navigate("TabAdmin");
+      // } 
+      // if (role === "supir"){
+      //   nav.navigate("StackSupir");
+      // }
       if (role === "user"){
         nav.navigate("TabUser");
       }
@@ -52,7 +52,7 @@ const SignedInNavigator = () => {
       headerMode="float"
       animation="fade"
     >
-      <Stack.Screen
+      {/* <Stack.Screen
         name="TabAdmin"
         component={AdminTabNavigation}
         options={{ headerShown: false }}
@@ -61,7 +61,7 @@ const SignedInNavigator = () => {
         name="StackSupir"
         component={SupirStackNavigation}
         options={{ headerShown: false }}
-      />
+      /> */}
       <Stack.Screen
         name="TabUser"
         component={UserTabNavigation}
@@ -106,6 +106,11 @@ const SignedOutNavigator = () => {
 
 export default function App() {
   const userId = useStore(state => state.userId);
+  
+  useEffect(() => {
+    console.log('user:', userId);
+  }, [userId]);
+
   return (
     <NavigationContainer>
       {userId ? <SignedInNavigator /> : <SignedOutNavigator />}
