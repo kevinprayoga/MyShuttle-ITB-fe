@@ -16,28 +16,42 @@ import useStore from './src/context/store';
 const Stack = createNativeStackNavigator();
 
 const fetchRoleUserData = async (userId) => {
-
+  try {
+    const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}:${process.env.EXPO_PUBLIC_PORT}/user/${userId}`);
+    const data = await response.json();
+    console.log('data: ', data);
+    return data.data[0].role; // Accessing the role correctly
+  } catch (error) {
+    console.error('error: ', error);
+  }
 };
 
 const SignedInNavigator = () => {
   const userId = useStore(state => state.userId);
   const nav = useNavigation();
   const [role, setRole] = useState('');
+
   useEffect(() => {
-    async function roleUser() {
-      setRole(await fetchRoleUserData(userId));
-      // if (role === "admin") {
-      //   nav.navigate("TabAdmin");
-      // } 
-      // if (role === "supir"){
-      //   nav.navigate("StackSupir");
-      // }
-      if (role === "user"){
+    const roleUser = async () => {
+      const fetchedRole = await fetchRoleUserData(userId);
+      setRole(fetchedRole);
+      console.log('role: ', fetchedRole);
+
+      if (fetchedRole === "admin") {
+        nav.navigate("TabAdmin");
+      } 
+      if (fetchedRole === "supir") {
+        nav.navigate("StackSupir");
+      }
+      if (fetchedRole === "user") {
         nav.navigate("TabUser");
       }
+    };
+
+    if (userId) {
+      roleUser();
     }
-    roleUser();
-  }, [userId]);
+  }, [userId, nav]);
 
   return (
     <Stack.Navigator
@@ -52,7 +66,7 @@ const SignedInNavigator = () => {
       headerMode="float"
       animation="fade"
     >
-      {/* <Stack.Screen
+      <Stack.Screen
         name="TabAdmin"
         component={AdminTabNavigation}
         options={{ headerShown: false }}
@@ -61,14 +75,14 @@ const SignedInNavigator = () => {
         name="StackSupir"
         component={SupirStackNavigation}
         options={{ headerShown: false }}
-      /> */}
+      />
       <Stack.Screen
         name="TabUser"
         component={UserTabNavigation}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
-  )
+  );
 };
 
 const SignedOutNavigator = () => {
@@ -101,12 +115,12 @@ const SignedOutNavigator = () => {
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
-  )
+  );
 };
 
 export default function App() {
   const userId = useStore(state => state.userId);
-  
+
   useEffect(() => {
     console.log('user:', userId);
   }, [userId]);
