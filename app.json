@@ -13,10 +13,9 @@
     },
     "ios": {
       "supportsTablet": true,
-      "infoPlist": {
-        "NSCameraUsageDescription": "This app uses the camera to scan barcodes."
       "bundleIdentifier": "com.kevinprayoga.MyShuttleITB",
       "infoPlist": {
+        "NSCameraUsageDescription": "This app uses the camera to scan barcodes.",
         "NSAppTransportSecurity": {
           "NSAllowsArbitraryLoads": true,
           "NSExceptionDomains": {
@@ -34,7 +33,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff",
         "permissions": ["CAMERA"]
-      }
+      },
       "permissions": [
         "android.permission.INTERNET"
       ]
