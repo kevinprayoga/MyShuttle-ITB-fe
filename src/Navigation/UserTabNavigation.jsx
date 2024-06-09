@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StatusBar, View, Text } from 'react-native';
 import { Entypo, Feather, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
-import UserHome from '../Tab/User/UserHome';
+import UserHomeStackNavigation from './UserHomeStackNavigation';
 import MapStacknavigation from './MapStackNavigation';
 import Profile from '../Tab/Profile';
 
@@ -16,10 +16,10 @@ export default function TabNavigation() {
       <Tab.Navigator
         screenOptions={{
           headerShown: false,
-          tabBarActiveTintColor: "#5A4DF3",
+          tabBarActiveTintColor: "#206CDF",
           tabBarInactiveTintColor: "#FFFFFF",
           tabBarStyle: { 
-            backgroundColor: "#5A4DF3", 
+            backgroundColor: "#206CDF", 
             borderTopLeftRadius: 20, 
             borderTopRightRadius: 20,
             paddingHorizontal: 10,
@@ -31,12 +31,12 @@ export default function TabNavigation() {
         }}
       >
         <Tab.Screen
-          name="UserHome"
-          component={UserHome}
+          name="UserHomeNavigation"
+          component={UserHomeStackNavigation}
           options={{
             tabBarIcon: ({ focused, size }) => (
               <View style={focused ? styles.focusedTab : styles.defaultTab}>
-                <MaterialCommunityIcons name="home-analytics" size={size} color={focused ? "#5A4DF3" : "#FFFFFF"} />
+                <MaterialCommunityIcons name="home-analytics" size={size} color={focused ? "#206CDF" : "#FFFFFF"} />
                 {focused && <Text style={styles.focusedText}>Home</Text>}
               </View>
             ),
@@ -48,7 +48,7 @@ export default function TabNavigation() {
           options={{
             tabBarIcon: ({ focused, size }) => (
               <View style={focused ? styles.focusedTab : styles.defaultTab}>
-                <MaterialCommunityIcons name="google-maps" size={size} color={focused ? "#5A4DF3" : "#FFFFFF"} />
+                <MaterialCommunityIcons name="google-maps" size={size} color={focused ? "#206CDF" : "#FFFFFF"} />
                 {focused && <Text style={styles.focusedText}>Maps</Text>}
               </View>
             ),
@@ -60,7 +60,7 @@ export default function TabNavigation() {
           options={{
             tabBarIcon: ({ focused, size }) => (
               <View style={focused ? styles.focusedTab : styles.defaultTab}>
-                <Ionicons name="person-circle-outline" size={size} color={focused ? "#5A4DF3" : "#FFFFFF"} />
+                <Ionicons name="person-circle-outline" size={size} color={focused ? "#206CDF" : "#FFFFFF"} />
                 {focused && <Text style={styles.focusedText}>Profile</Text>}
               </View>
             ),
@@ -90,7 +90,7 @@ const styles = {
     marginTop: 10,
   },
   focusedText: {
-    color: '#5A4DF3',
+    color: '#206CDF',
     fontSize: 11,
     marginLeft: 5,
     fontFamily: 'Poppins',
