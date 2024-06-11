@@ -2,9 +2,9 @@ import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { config, closeConfig } from "./hooks/animation";
 
-import Landing from './src/LandingPage/Landing';
-import Login from './src/LandingPage/Login';
-import Register from './src/LandingPage/Register';
+import Landing from './src/landingPage/Landing';
+import Login from './src/landingPage/login';
+import Register from './src/landingPage/register';
 import UserTabNavigation from "./src/Navigation/UserTabNavigation";
 import AdminTabNavigation from "./src/Navigation/AdminTabNavigation";
 import SupirStackNavigation from "./src/Navigation/SupirStackNavigation";
